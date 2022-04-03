@@ -43,5 +43,22 @@ namespace CS_CRUD_WinForm_001
             conn.Close();
             MessageBox.Show("Insert Seccessfully");
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            string SqlQuery1 = "Update [benutzer] set vorname = @vorname, name = @name, age = @age, fach = @fach, note = @note, abgeschlossen = @abgeschlossen Where id = @id";
+            cmd = new SqlCommand(SqlQuery1, conn);
+            cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+            cmd.Parameters.AddWithValue("@vorname", txtVorname.Text);
+            cmd.Parameters.AddWithValue("@name", txtName.Text);
+            cmd.Parameters.AddWithValue("@age", int.Parse(txtAlter.Text));
+            cmd.Parameters.AddWithValue("@fach", txtFach.Text);
+            cmd.Parameters.AddWithValue("@note", double.Parse(txtNote.Text));
+            cmd.Parameters.AddWithValue("@abgeschlossen", checkBoxAbgeschlossen.Checked);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            MessageBox.Show("Update Seccessfully");
+        }
     }
 }

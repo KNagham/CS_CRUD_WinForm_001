@@ -42,6 +42,8 @@
             this.txtNote = new System.Windows.Forms.TextBox();
             this.btnInsert = new System.Windows.Forms.Button();
             this.checkBoxAbgeschlossen = new System.Windows.Forms.CheckBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -161,11 +163,30 @@
             this.checkBoxAbgeschlossen.TabIndex = 14;
             this.checkBoxAbgeschlossen.UseVisualStyleBackColor = true;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(257, 357);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(94, 29);
+            this.btnUpdate.TabIndex = 15;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(223, 18);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(154, 27);
+            this.txtId.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.checkBoxAbgeschlossen);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.txtNote);
@@ -203,5 +224,7 @@
         private TextBox txtNote;
         private Button btnInsert;
         private CheckBox checkBoxAbgeschlossen;
+        private Button btnUpdate;
+        private TextBox txtId;
     }
 }
