@@ -6,5 +6,7 @@ namespace CS_CRUD_WinForm_001
         {
             InitializeComponent();
         }
+
+        
     }
 }
