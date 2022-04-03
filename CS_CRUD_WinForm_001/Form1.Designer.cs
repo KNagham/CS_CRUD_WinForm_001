@@ -40,8 +40,8 @@
             this.txtAlter = new System.Windows.Forms.TextBox();
             this.txtFach = new System.Windows.Forms.TextBox();
             this.txtNote = new System.Windows.Forms.TextBox();
-            this.txtAbgeschlossen = new System.Windows.Forms.TextBox();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.checkBoxAbgeschlossen = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -142,13 +142,6 @@
             this.txtNote.Size = new System.Drawing.Size(154, 27);
             this.txtNote.TabIndex = 11;
             // 
-            // txtAbgeschlossen
-            // 
-            this.txtAbgeschlossen.Location = new System.Drawing.Point(223, 283);
-            this.txtAbgeschlossen.Name = "txtAbgeschlossen";
-            this.txtAbgeschlossen.Size = new System.Drawing.Size(154, 27);
-            this.txtAbgeschlossen.TabIndex = 12;
-            // 
             // btnInsert
             // 
             this.btnInsert.Location = new System.Drawing.Point(108, 357);
@@ -157,14 +150,24 @@
             this.btnInsert.TabIndex = 13;
             this.btnInsert.Text = "INSERT";
             this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // checkBoxAbgeschlossen
+            // 
+            this.checkBoxAbgeschlossen.AutoSize = true;
+            this.checkBoxAbgeschlossen.Location = new System.Drawing.Point(223, 286);
+            this.checkBoxAbgeschlossen.Name = "checkBoxAbgeschlossen";
+            this.checkBoxAbgeschlossen.Size = new System.Drawing.Size(18, 17);
+            this.checkBoxAbgeschlossen.TabIndex = 14;
+            this.checkBoxAbgeschlossen.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBoxAbgeschlossen);
             this.Controls.Add(this.btnInsert);
-            this.Controls.Add(this.txtAbgeschlossen);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.txtFach);
             this.Controls.Add(this.txtAlter);
@@ -198,7 +201,7 @@
         private TextBox txtAlter;
         private TextBox txtFach;
         private TextBox txtNote;
-        private TextBox txtAbgeschlossen;
         private Button btnInsert;
+        private CheckBox checkBoxAbgeschlossen;
     }
 }
