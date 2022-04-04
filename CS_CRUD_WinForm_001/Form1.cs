@@ -11,13 +11,13 @@ using System.Data.SqlClient;
 
 namespace CS_CRUD_WinForm_001
 {
-    public partial class Form1 : Form
+    public partial class ListBox : Form
     {
         SqlConnection conn;
         SqlCommand cmd;
         string SqlQuery;
         //SqlDataReader reader;
-        public Form1()
+        public ListBox()
         {   
             InitializeComponent();
             DbConnection();
@@ -44,6 +44,7 @@ namespace CS_CRUD_WinForm_001
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Insert Seccessfully");
+        
             Update();
         }
 
