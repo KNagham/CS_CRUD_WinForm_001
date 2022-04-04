@@ -15,11 +15,13 @@ namespace CS_CRUD_WinForm_001
     {
         SqlConnection conn;
         SqlCommand cmd;
+        string SqlQuery;
         //SqlDataReader reader;
         public Form1()
         {   
             InitializeComponent();
             DbConnection();
+            Update();
         }
 
         private void DbConnection()
@@ -42,13 +44,14 @@ namespace CS_CRUD_WinForm_001
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Insert Seccessfully");
+            Update();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             conn.Open();
-            string SqlQuery1 = "Update [benutzer] set vorname = @vorname, name = @name, age = @age, fach = @fach, note = @note, abgeschlossen = @abgeschlossen Where id = @id";
-            cmd = new SqlCommand(SqlQuery1, conn);
+            string SqlQuery = "Update [benutzer] set vorname = @vorname, name = @name, age = @age, fach = @fach, note = @note, abgeschlossen = @abgeschlossen Where id = @id";
+            cmd = new SqlCommand(SqlQuery, conn);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
             cmd.Parameters.AddWithValue("@vorname", txtVorname.Text);
             cmd.Parameters.AddWithValue("@name", txtName.Text);
@@ -59,17 +62,45 @@ namespace CS_CRUD_WinForm_001
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Update Seccessfully");
+            Update();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             conn.Open();
-            string SqlQuery2 = "Delete from [benutzer] where id = @id";
-            cmd = new SqlCommand(SqlQuery2, conn);
+            string SqlQuery = "Delete from [benutzer] where id = @id";
+            cmd = new SqlCommand(SqlQuery, conn);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Delete Seccessfully");
+            Update();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            SqlQuery = "Select * From [benutzer] Where id = @id";
+            cmd = new SqlCommand(SqlQuery, conn);
+            cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            sqlDataAdapter.Fill(dataTable);
+            dataGridBenutzer.DataSource = dataTable;
+            conn.Close();
+        }
+        private void Update()
+        {
+            conn.Open();
+            SqlQuery = "Select * From [benutzer]";
+            cmd = new SqlCommand(SqlQuery, conn);
+            DataTable dataTable = new DataTable(); //empty table
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);  //data
+            sqlDataAdapter.Fill(dataTable); //data are being filled into the empty table
+
+            dataGridBenutzer.DataSource = dataTable;
+            conn.Close();
+        }
+
     }
 }

@@ -45,6 +45,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.dataGridBenutzer = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBenutzer)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -147,7 +150,7 @@
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(108, 357);
+            this.btnInsert.Location = new System.Drawing.Point(409, 21);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(94, 29);
             this.btnInsert.TabIndex = 13;
@@ -166,7 +169,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(257, 357);
+            this.btnUpdate.Location = new System.Drawing.Point(409, 56);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(94, 29);
             this.btnUpdate.TabIndex = 15;
@@ -183,7 +186,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(409, 357);
+            this.btnDelete.Location = new System.Drawing.Point(409, 103);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 29);
             this.btnDelete.TabIndex = 17;
@@ -191,11 +194,34 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(409, 156);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(94, 29);
+            this.btnSearch.TabIndex = 18;
+            this.btnSearch.Text = "SEARCH";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // dataGridBenutzer
+            // 
+            this.dataGridBenutzer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridBenutzer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridBenutzer.Location = new System.Drawing.Point(108, 321);
+            this.dataGridBenutzer.Name = "dataGridBenutzer";
+            this.dataGridBenutzer.RowHeadersWidth = 51;
+            this.dataGridBenutzer.RowTemplate.Height = 29;
+            this.dataGridBenutzer.Size = new System.Drawing.Size(581, 163);
+            this.dataGridBenutzer.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 521);
+            this.Controls.Add(this.dataGridBenutzer);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnUpdate);
@@ -215,6 +241,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBenutzer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,5 +266,7 @@
         private Button btnUpdate;
         private TextBox txtId;
         private Button btnDelete;
+        private Button btnSearch;
+        private DataGridView dataGridBenutzer;
     }
 }
