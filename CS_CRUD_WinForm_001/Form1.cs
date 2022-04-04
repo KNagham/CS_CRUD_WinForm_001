@@ -60,5 +60,16 @@ namespace CS_CRUD_WinForm_001
             conn.Close();
             MessageBox.Show("Update Seccessfully");
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            string SqlQuery2 = "Delete from [benutzer] where id = @id";
+            cmd = new SqlCommand(SqlQuery2, conn);
+            cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            MessageBox.Show("Delete Seccessfully");
+        }
     }
 }

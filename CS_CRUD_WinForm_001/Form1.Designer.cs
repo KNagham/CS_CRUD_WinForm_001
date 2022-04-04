@@ -44,6 +44,7 @@
             this.checkBoxAbgeschlossen = new System.Windows.Forms.CheckBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -180,11 +181,22 @@
             this.txtId.Size = new System.Drawing.Size(154, 27);
             this.txtId.TabIndex = 16;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(409, 357);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(94, 29);
+            this.btnDelete.TabIndex = 17;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.checkBoxAbgeschlossen);
@@ -226,5 +238,6 @@
         private CheckBox checkBoxAbgeschlossen;
         private Button btnUpdate;
         private TextBox txtId;
+        private Button btnDelete;
     }
 }
