@@ -45,7 +45,7 @@ namespace CS_CRUD_WinForm_001
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Insert Seccessfully");
-        
+            Clear();
             Update();
         }
 
@@ -64,6 +64,7 @@ namespace CS_CRUD_WinForm_001
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Update Seccessfully");
+            Clear();
             Update();
         }
 
@@ -76,6 +77,7 @@ namespace CS_CRUD_WinForm_001
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Delete Seccessfully");
+            Clear();
             Update();
         }
         private void Clear()
@@ -148,18 +150,18 @@ namespace CS_CRUD_WinForm_001
             sqlDataAdapter.Fill(dataTable);
             dataGridBenutzer.DataSource = dataTable;
             conn.Close();
+            Clear();
         }
         private void Update()
-            {
-                conn.Open();
-                sqlQuery = "Select * From [benutzer]";
-                cmd = new SqlCommand(sqlQuery, conn);
-                DataTable dataTable = new DataTable(); //empty table
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);  //data
-                sqlDataAdapter.Fill(dataTable); //data are being filled into the empty table
-                dataGridBenutzer.DataSource = dataTable;
-                conn.Close();
-                Clear();
+        {
+            conn.Open();
+            sqlQuery = "Select * From [benutzer]";
+            cmd = new SqlCommand(sqlQuery, conn);
+            DataTable dataTable = new DataTable(); //empty table
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);  //data
+            sqlDataAdapter.Fill(dataTable); //data are being filled into the empty table
+            dataGridBenutzer.DataSource = dataTable;
+            conn.Close();
         }
 
     }
