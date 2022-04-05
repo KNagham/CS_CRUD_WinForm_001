@@ -15,13 +15,14 @@ namespace CS_CRUD_WinForm_001
     {
         SqlConnection conn;
         SqlCommand cmd;
-        string SqlQuery;
+        string sqlQuery;
         //SqlDataReader reader;
         public ListBox()
         {   
             InitializeComponent();
             DbConnection();
             Update();
+            Clear();
         }
 
         private void DbConnection()
@@ -33,8 +34,8 @@ namespace CS_CRUD_WinForm_001
         {
             //txtVorname.Text = "Khaled";
             conn.Open();
-            string SqlQuery = "insert into [benutzer] (vorname, name, age, fach, note, abgeschlossen) Values (@vorname,@name, @age, @fach, @note, @abgeschlossen)";
-            cmd = new SqlCommand(SqlQuery, conn);
+            string sqlQuery = "insert into [benutzer] (vorname, name, age, fach, note, abgeschlossen) Values (@vorname,@name, @age, @fach, @note, @abgeschlossen)";
+            cmd = new SqlCommand(sqlQuery, conn);
             cmd.Parameters.AddWithValue("@vorname", txtVorname.Text);
             cmd.Parameters.AddWithValue("@name", txtName.Text);
             cmd.Parameters.AddWithValue("@age", int.Parse(txtAlter.Text));
@@ -51,8 +52,8 @@ namespace CS_CRUD_WinForm_001
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             conn.Open();
-            string SqlQuery = "Update [benutzer] set vorname = @vorname, name = @name, age = @age, fach = @fach, note = @note, abgeschlossen = @abgeschlossen Where id = @id";
-            cmd = new SqlCommand(SqlQuery, conn);
+            sqlQuery = "Update [benutzer] set vorname = @vorname, name = @name, age = @age, fach = @fach, note = @note, abgeschlossen = @abgeschlossen Where id = @id";
+            cmd = new SqlCommand(sqlQuery, conn);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
             cmd.Parameters.AddWithValue("@vorname", txtVorname.Text);
             cmd.Parameters.AddWithValue("@name", txtName.Text);
@@ -69,21 +70,79 @@ namespace CS_CRUD_WinForm_001
         private void btnDelete_Click(object sender, EventArgs e)
         {
             conn.Open();
-            string SqlQuery = "Delete from [benutzer] where id = @id";
-            cmd = new SqlCommand(SqlQuery, conn);
+            sqlQuery = "Delete from [benutzer] where id = @id";
+            cmd = new SqlCommand(sqlQuery, conn);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Delete Seccessfully");
             Update();
         }
-
+        private void Clear()
+        {
+            txtId.Text = "";
+            txtVorname.Text = "";
+            txtName.Text = "";
+            txtAlter.Text = "";
+            txtNote.Text = "";
+            txtFach.Text = "";
+            checkBoxAbgeschlossen.Checked = false;
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             conn.Open();
-            SqlQuery = "Select * From [benutzer] Where id = @id";
-            cmd = new SqlCommand(SqlQuery, conn);
-            cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+            if (txtId.Text != "")
+            {
+                sqlQuery = "Select * From [benutzer] Where id = @id";
+                cmd = new SqlCommand(sqlQuery, conn);
+                cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+            }
+            else if (txtVorname.Text != "")
+            {
+                sqlQuery = "Select * From [benutzer] Where vorname = @vorname";
+                cmd = new SqlCommand(sqlQuery, conn);
+                cmd.Parameters.AddWithValue("@vorname", txtVorname.Text);
+
+            }
+            else if (txtName.Text != "")
+            {
+                sqlQuery = "Select * From [benutzer] Where name = @name";
+                cmd = new SqlCommand(sqlQuery, conn);
+                cmd.Parameters.AddWithValue("@name", txtName.Text);
+
+            }
+            else if (txtAlter.Text != "")
+            {
+                sqlQuery = "Select * From [benutzer] Where age = @age";
+                cmd = new SqlCommand(sqlQuery, conn);
+                cmd.Parameters.AddWithValue("@age", int.Parse(txtAlter.Text));
+
+            }
+            else if (txtFach.Text != "")
+            {
+                sqlQuery = "Select * From [benutzer] Where fach = @fach";
+                cmd = new SqlCommand(sqlQuery, conn);
+                cmd.Parameters.AddWithValue("@fach", txtFach.Text);
+
+            }
+            else if (txtNote.Text != "")
+            {
+                sqlQuery = "Select * From [benutzer] Where note = @note";
+                cmd = new SqlCommand(sqlQuery, conn);
+                cmd.Parameters.AddWithValue("@note", int.Parse(txtNote.Text));
+            }
+            else if (checkBoxAbgeschlossen.Checked != false)
+            {
+                sqlQuery = "Select * From [benutzer] Where abgeschlossen = @abgeschlossen";
+                cmd = new SqlCommand(sqlQuery, conn);
+                cmd.Parameters.AddWithValue("@abgeschlossen", checkBoxAbgeschlossen.Checked);
+
+            }
+            else
+            {
+                sqlQuery = "Select * From [benutzer]";
+                cmd = new SqlCommand(sqlQuery, conn);
+            }
             DataTable dataTable = new DataTable();
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
             sqlDataAdapter.Fill(dataTable);
@@ -91,16 +150,16 @@ namespace CS_CRUD_WinForm_001
             conn.Close();
         }
         private void Update()
-        {
-            conn.Open();
-            SqlQuery = "Select * From [benutzer]";
-            cmd = new SqlCommand(SqlQuery, conn);
-            DataTable dataTable = new DataTable(); //empty table
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);  //data
-            sqlDataAdapter.Fill(dataTable); //data are being filled into the empty table
-
-            dataGridBenutzer.DataSource = dataTable;
-            conn.Close();
+            {
+                conn.Open();
+                sqlQuery = "Select * From [benutzer]";
+                cmd = new SqlCommand(sqlQuery, conn);
+                DataTable dataTable = new DataTable(); //empty table
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);  //data
+                sqlDataAdapter.Fill(dataTable); //data are being filled into the empty table
+                dataGridBenutzer.DataSource = dataTable;
+                conn.Close();
+                Clear();
         }
 
     }

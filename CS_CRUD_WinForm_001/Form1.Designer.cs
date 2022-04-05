@@ -250,6 +250,7 @@
             this.dataGridBenutzer.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridBenutzer.Location = new System.Drawing.Point(122, 321);
             this.dataGridBenutzer.Name = "dataGridBenutzer";
+            this.dataGridBenutzer.ReadOnly = true;
             this.dataGridBenutzer.RowHeadersWidth = 51;
             this.dataGridBenutzer.RowTemplate.Height = 29;
             this.dataGridBenutzer.Size = new System.Drawing.Size(654, 163);
@@ -260,7 +261,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(900, 521);
+            this.ClientSize = new System.Drawing.Size(900, 554);
             this.Controls.Add(this.dataGridBenutzer);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDelete);
