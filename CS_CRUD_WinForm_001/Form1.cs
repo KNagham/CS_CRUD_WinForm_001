@@ -29,7 +29,16 @@ namespace CS_CRUD_WinForm_001
         {
             conn = new SqlConnection("Data Source=MPGNBNK;Initial Catalog=test_001;Integrated Security=True");
         }
-
+        private void Clear()
+        {
+            txtId.Text = "";
+            txtVorname.Text = "";
+            txtName.Text = "";
+            txtAlter.Text = "";
+            txtNote.Text = "";
+            txtFach.Text = "";
+            checkBoxAbgeschlossen.Checked = false;
+        }
         private void btnInsert_Click(object sender, EventArgs e)
         {
             //txtVorname.Text = "Khaled";
@@ -80,16 +89,6 @@ namespace CS_CRUD_WinForm_001
             Clear();
             Update();
         }
-        private void Clear()
-        {
-            txtId.Text = "";
-            txtVorname.Text = "";
-            txtName.Text = "";
-            txtAlter.Text = "";
-            txtNote.Text = "";
-            txtFach.Text = "";
-            checkBoxAbgeschlossen.Checked = false;
-        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             conn.Open();
@@ -104,28 +103,24 @@ namespace CS_CRUD_WinForm_001
                 sqlQuery = "Select * From [benutzer] Where vorname = @vorname";
                 cmd = new SqlCommand(sqlQuery, conn);
                 cmd.Parameters.AddWithValue("@vorname", txtVorname.Text);
-
             }
             else if (txtName.Text != "")
             {
                 sqlQuery = "Select * From [benutzer] Where name = @name";
                 cmd = new SqlCommand(sqlQuery, conn);
                 cmd.Parameters.AddWithValue("@name", txtName.Text);
-
             }
             else if (txtAlter.Text != "")
             {
                 sqlQuery = "Select * From [benutzer] Where age = @age";
                 cmd = new SqlCommand(sqlQuery, conn);
                 cmd.Parameters.AddWithValue("@age", int.Parse(txtAlter.Text));
-
             }
             else if (txtFach.Text != "")
             {
                 sqlQuery = "Select * From [benutzer] Where fach = @fach";
                 cmd = new SqlCommand(sqlQuery, conn);
                 cmd.Parameters.AddWithValue("@fach", txtFach.Text);
-
             }
             else if (txtNote.Text != "")
             {
@@ -138,7 +133,6 @@ namespace CS_CRUD_WinForm_001
                 sqlQuery = "Select * From [benutzer] Where abgeschlossen = @abgeschlossen";
                 cmd = new SqlCommand(sqlQuery, conn);
                 cmd.Parameters.AddWithValue("@abgeschlossen", checkBoxAbgeschlossen.Checked);
-
             }
             else
             {
